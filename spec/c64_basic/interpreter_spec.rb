@@ -28,6 +28,13 @@ module C64Basic
         specify { expect(output).to be_empty }
         specify { expect(error).to be_empty }
       end
+
+      context "PRINT" do
+        before(:each) { interpreter.evaluate("PRINT") }
+
+        specify { expect(output).to be == "\n" }
+        specify { expect(error).to be_empty }
+      end
     end
   end
 end

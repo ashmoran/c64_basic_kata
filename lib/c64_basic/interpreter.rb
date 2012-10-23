@@ -6,7 +6,7 @@ module C64Basic
     end
 
     def evaluate(line)
-
+      @output.puts if line == "PRINT"
     end
   end
 end
