@@ -41,10 +41,22 @@ module C64Basic
           end
         end
 
-        context "given a string literal" do
+        context "a string literal" do
           example do
             interpreter.evaluate('PRINT "string literal"')
             expect(output).to be == "string literal\n"
+          end
+        end
+
+        context "an integer" do
+          example do
+            interpreter.evaluate('PRINT 123')
+            expect(output).to be == "123\n"
+          end
+
+          example do
+            interpreter.evaluate('PRINT -3')
+            expect(output).to be == "-3\n"
           end
         end
       end

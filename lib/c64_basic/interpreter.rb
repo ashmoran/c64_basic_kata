@@ -19,6 +19,8 @@ module C64Basic
         @output.puts
       when /"([^"]*)"/
         @output.puts($1)
+      when /(-?\d+)/
+        @output.puts($1)
       end
     end
   end

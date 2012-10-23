@@ -41,3 +41,18 @@ Feature: PRINT
 
       """
     And the stderr should be empty
+
+  Scenario: The “print” statement can output number constants
+    Given a file named "print_integers.c64b" with:
+      """
+      PRINT 123
+      PRINT -3
+      """
+    When I successfully run `c64basic print_integers.c64b`
+    Then the stdout should contain exactly:
+      """
+      123
+      -3
+
+      """
+    And the stderr should be empty
