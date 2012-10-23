@@ -5,23 +5,8 @@ module C64Basic
       @error  = dependencies[:error]
     end
 
-    def evaluate(line)
-      if match = /PRINT ?(?<argument>.*)/.match(line)
-        print(match[:argument])
-      end
-    end
-
-    private
-
-    def print(argument)
-      case argument
-      when ""
-        @output.puts
-      when /"([^"]*)"/
-        @output.puts($1)
-      when /(-?\d+)/
-        @output.puts($1)
-      end
+    def evaluate(expression)
+      expression.interpret(__io: { output: @output, error: @error })
     end
   end
 end

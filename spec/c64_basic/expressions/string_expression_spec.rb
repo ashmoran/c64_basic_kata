@@ -7,6 +7,12 @@ module C64Basic
     describe StringExpression do
       subject(:expression) { StringExpression.new("foo") }
 
+      describe "#interpret" do
+        specify {
+          expect(expression.interpret(:unused_context)).to be == "foo"
+        }
+      end
+
       describe "#==" do
         specify {
           expect(expression).to be == StringExpression.new("foo")

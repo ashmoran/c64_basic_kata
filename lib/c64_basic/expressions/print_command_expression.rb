@@ -5,6 +5,14 @@ module C64Basic
         @argument = argument
       end
 
+      def interpret(context)
+        if @argument
+          context[:__io][:output].puts(@argument.interpret(context))
+        else
+          context[:__io][:output].puts
+        end
+      end
+
       def ==(other)
         other.is_a?(PrintCommandExpression) && other.has_argument?(@argument)
       end

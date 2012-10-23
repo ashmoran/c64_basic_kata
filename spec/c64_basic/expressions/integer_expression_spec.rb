@@ -7,6 +7,12 @@ module C64Basic
     describe IntegerExpression do
       subject(:expression) { IntegerExpression.new(1) }
 
+      describe "#interpret" do
+        specify {
+          expect(expression.interpret(:unused_context)).to be == 1
+        }
+      end
+
       describe "#==" do
         specify {
           expect(expression).to be == IntegerExpression.new(1)

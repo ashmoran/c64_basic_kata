@@ -4,6 +4,7 @@ require_relative '../lib/c64_basic'
 
 C64Basic::Command.new(
   filename:             ARGV[0],
+  parser_factory:       C64Basic::Parser,
   interpreter_factory:  C64Basic::Interpreter,
   output:               STDOUT,
   error:                STDERR

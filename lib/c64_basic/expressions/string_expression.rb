@@ -5,6 +5,10 @@ module C64Basic
         @value = value
       end
 
+      def interpret(context)
+        @value
+      end
+
       def ==(other)
         other.is_a?(StringExpression) && other.has_string_value?(@value)
       end

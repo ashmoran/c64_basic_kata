@@ -2,6 +2,7 @@ module C64Basic
   class Command
     def initialize(options)
       @filename             = options[:filename]
+      @parser_factory       = options[:parser_factory]
       @interpreter_factory  = options[:interpreter_factory]
       @output               = options[:output]
       @error                = options[:error]
@@ -9,8 +10,10 @@ module C64Basic
 
     def run
       with_interpreter do |interpreter|
-        each_file_line do |line|
-          interpreter.evaluate(line)
+        with_parser(interpreter) do |parser|
+          each_file_line do |line|
+            parser.parse(line)
+          end
         end
       end
     end
@@ -19,6 +22,10 @@ module C64Basic
 
     def with_interpreter(&block)
       yield @interpreter_factory.new(output: @output, error: @error)
+    end
+
+    def with_parser(interpreter, &block)
+      yield @parser_factory.new(interpreter)
     end
 
     def each_file_line(&block)
