@@ -1,7 +1,12 @@
 module C64Basic
   class Parser
     def parse(line)
-      Expressions::IntegerExpression.new(line.to_i)
+      case line
+      when /(-?\d+)/
+        Expressions::IntegerExpression.new($1.to_i)
+      when /"([^"]*)"/
+        Expressions::StringExpression.new($1)
+      end
     end
   end
 end

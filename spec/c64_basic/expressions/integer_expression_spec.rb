@@ -15,6 +15,10 @@ module C64Basic
         specify {
           expect(expression).to_not be == IntegerExpression.new(2)
         }
+
+        specify {
+          expect(expression).to_not be == StringExpression.new("1")
+        }
       end
     end
   end
