@@ -39,6 +39,22 @@ module C64Basic
       example do
         expect(parser.parse(" PRINT ")).to be == Expressions::PrintCommandExpression.new
       end
+
+      context "with an argument" do
+        example do
+          expect(parser.parse("PRINT 1")).to be ==
+            Expressions::PrintCommandExpression.new(
+              Expressions::IntegerExpression.new(1)
+            )
+        end
+
+        example do
+          expect(parser.parse('PRINT "bobbins"')).to be ==
+            Expressions::PrintCommandExpression.new(
+              Expressions::StringExpression.new("bobbins")
+            )
+        end
+      end
     end
   end
 end
