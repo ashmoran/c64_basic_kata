@@ -1,0 +1,15 @@
+{
+	"folders":
+	[
+		{
+			"path": ".",
+			"folder_exclude_patterns": [
+				"tmp"
+			],
+			"file_exclude_patterns": [
+				"c64_basic_kata.sublime-project",
+				"c64_basic_kata.sublime-workspace"
+			]
+		}
+	]
+}
