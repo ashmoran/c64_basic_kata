@@ -11,6 +11,10 @@ module C64Basic
       example do
         expect(parser.parse("1")).to be == Expressions::IntegerExpression.new(1)
       end
+
+      example do
+        expect(parser.parse("-2")).to be == Expressions::IntegerExpression.new(-2)
+      end
     end
   end
 end
