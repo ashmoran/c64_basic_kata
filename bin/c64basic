@@ -1,2 +1,10 @@
-#!/usr/bin/env ruby -w
+#!/usr/bin/env ruby
 
+require_relative '../lib/c64_basic'
+
+C64Basic::Command.new(
+  filename:             ARGV[0],
+  interpreter_factory:  C64Basic::Interpreter,
+  output:               STDOUT,
+  error:                STDERR
+).run

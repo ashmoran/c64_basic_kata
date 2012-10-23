@@ -2,6 +2,7 @@ guard 'cucumber', cli: "-p guard" do
   watch(%r{^features/.+\.feature$})
   watch(%r{^features/support/.+$}) { 'features' }
   watch(%r{^features/step_definitions/.+$}) { 'features' }
+  watch(%r{^bin/c64basic$}) { 'features' }
 end
 
 guard 'rspec', cli: "--color --format Fuubar" do

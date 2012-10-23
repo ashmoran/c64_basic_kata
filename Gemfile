@@ -18,6 +18,7 @@ group :development do
 	gem 'rspec'
 	gem 'guard-rspec'
 	gem 'fuubar'
+	gem 'fakefs'
 
 	gem 'pry'
 
