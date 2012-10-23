@@ -15,11 +15,19 @@ module C64Basic
       example do
         expect(parser.parse("-2")).to be == Expressions::IntegerExpression.new(-2)
       end
+
+      example do
+        expect(parser.parse(" 9 "))
+      end
     end
 
     context "a string" do
       example do
         expect(parser.parse('"bobbins"')).to be == Expressions::StringExpression.new("bobbins")
+      end
+
+      example do
+        expect(parser.parse(' "bobbins" ')).to be == Expressions::StringExpression.new("bobbins")
       end
     end
   end
