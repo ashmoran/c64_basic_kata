@@ -24,3 +24,20 @@ Feature: PRINT
 
       """
     And the stderr should be empty
+
+  Scenario: Two or more statements in a sequence are executed one after the other
+    Given a file named "print_many_strings.c64b" with:
+      """
+      PRINT "Hi"
+      PRINT "There"
+      PRINT "!"
+      """
+    When I successfully run `c64basic print_many_strings.c64b`
+    Then the stdout should contain exactly:
+      """
+      Hi
+      There
+      !
+
+      """
+    And the stderr should be empty
