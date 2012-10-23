@@ -22,18 +22,31 @@ module C64Basic
     end
 
     describe "#evaluate" do
-      context "an empty line" do
-        before(:each) { interpreter.evaluate("") }
+      after(:each) do
+        expect(error).to be_empty
+      end
 
-        specify { expect(output).to be_empty }
-        specify { expect(error).to be_empty }
+      context "an empty line" do
+        example do
+          interpreter.evaluate("")
+          expect(output).to be_empty
+        end
       end
 
       context "PRINT" do
-        before(:each) { interpreter.evaluate("PRINT") }
+        context "no args" do
+          example do
+            interpreter.evaluate('PRINT')
+            expect(output).to be == "\n"
+          end
+        end
 
-        specify { expect(output).to be == "\n" }
-        specify { expect(error).to be_empty }
+        context "given a string literal" do
+          example do
+            interpreter.evaluate('PRINT "string literal"')
+            expect(output).to be == "string literal\n"
+          end
+        end
       end
     end
   end
