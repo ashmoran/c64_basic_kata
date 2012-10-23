@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-require 'c64_basic/expressions/integer_expression'
+require 'c64_basic/expressions'
 
 module C64Basic
   module Expressions

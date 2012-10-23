@@ -6,6 +6,8 @@ module C64Basic
         Expressions::IntegerExpression.new($1.to_i)
       when /"([^"]*)"/
         Expressions::StringExpression.new($1)
+      when /PRINT/
+        Expressions::PrintCommandExpression.new
       end
     end
   end

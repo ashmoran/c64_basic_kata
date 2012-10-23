@@ -30,5 +30,15 @@ module C64Basic
         expect(parser.parse(' "bobbins" ')).to be == Expressions::StringExpression.new("bobbins")
       end
     end
+
+    context "a command" do
+      example do
+        expect(parser.parse("PRINT")).to be == Expressions::PrintCommandExpression.new
+      end
+
+      example do
+        expect(parser.parse(" PRINT ")).to be == Expressions::PrintCommandExpression.new
+      end
+    end
   end
 end
