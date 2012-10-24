@@ -29,10 +29,6 @@ module C64Basic
         parser.parse(" ")
         expect(expression).to be == :nothing_parsed
       end
-
-      it "has a NullExpression instead" do
-        pending
-      end
     end
 
     context "an integer" do

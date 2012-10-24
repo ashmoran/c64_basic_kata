@@ -34,11 +34,15 @@ module C64Basic
           end
         end
 
-        its(:to_s) { should be == "PRINT()" }
+        its(:to_s) { should be == "PRINT(null)" }
 
         describe "#==" do
           specify {
             expect(expression).to be == PrintCommandExpression.new
+          }
+
+          specify {
+            expect(expression).to be == PrintCommandExpression.new(NullExpression.new)
           }
 
           specify {

@@ -15,7 +15,11 @@ module C64Basic
     def parse_line(line)
       case line
       when /PRINT( ?.*)/
-        Expressions::PrintCommandExpression.new(parse($1))
+        if argument_expression = parse($1)
+          Expressions::PrintCommandExpression.new(argument_expression)
+        else
+          Expressions::PrintCommandExpression.new
+        end
       when /([[:alpha:]])=(.*)/
         Expressions::VariableAssignmentExpression.new(parse($1), parse($2))
       when /(.*)\+([^+]+)/

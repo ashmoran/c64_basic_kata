@@ -1,16 +1,12 @@
 module C64Basic
   module Expressions
     class PrintCommandExpression
-      def initialize(argument = nil)
+      def initialize(argument = NullExpression.new)
         @argument = argument
       end
 
       def interpret(context)
-        if @argument
-          context[:__io][:output].puts(@argument.interpret(context))
-        else
-          context[:__io][:output].puts
-        end
+        context[:__io][:output].puts(@argument.interpret(context))
       end
 
       def ==(other)
