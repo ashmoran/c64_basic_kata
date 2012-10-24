@@ -2,14 +2,13 @@ module C64Basic
   module Expressions
     class VariableAssignmentExpression
       def initialize(variable_expression, value_expression)
-        @variable_expression =  variable_expression
+        @variable_expression  = variable_expression
         @value_expression     = value_expression
       end
 
       def interpret(context)
         @variable_expression.update_context(
-          context,
-          with_value: @value_expression.interpret(context)
+          context, with_value: @value_expression.interpret(context)
         )
       end
 
