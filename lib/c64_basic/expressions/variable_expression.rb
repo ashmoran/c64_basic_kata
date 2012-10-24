@@ -9,6 +9,10 @@ module C64Basic
         context[:__variables][@name]
       end
 
+      def update_context(context, options)
+        context[:__variables][@name] = options[:with_value]
+      end
+
       def ==(other)
         other.is_a?(VariableExpression) && other.has_name?(@name)
       end

@@ -28,6 +28,21 @@ module C64Basic
         end
         interpreter.evaluate(expression)
       end
+
+      # This is a bit nasty, probably the best clue we need to make
+      # "context" a first class object in the system
+      it "has a persistent context" do
+        updated_variable_value = 0
+
+        expression.stub(:interpret) do |context|
+          updated_variable_value = (context[:__variables]["X"] += 1)
+        end
+
+        interpreter.evaluate(expression)
+        interpreter.evaluate(expression)
+
+        expect(updated_variable_value).to be == 2
+      end
     end
   end
 end

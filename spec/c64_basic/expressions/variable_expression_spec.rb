@@ -17,6 +17,13 @@ module C64Basic
         }
       end
 
+      describe "#update_context" do
+        it "should description" do
+          expression.update_context(context, with_value: 2)
+          expect(context[:__variables]["X"]).to be == 2
+        end
+      end
+
       describe "#==" do
         specify {
           expect(expression).to be == VariableExpression.new("X")

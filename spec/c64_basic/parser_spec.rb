@@ -100,5 +100,16 @@ module C64Basic
         end
       end
     end
+
+    context "variable assignment" do
+      example do
+        parser.parse("A=1")
+        expect(expression).to be ==
+          Expressions::VariableAssignmentExpression.new(
+            Expressions::VariableExpression.new("A"),
+            Expressions::IntegerExpression.new(1)
+          )
+      end
+    end
   end
 end
