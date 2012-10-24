@@ -1,0 +1,6 @@
+A=B=2
+PRINT A
+PRINT B
+
+PRINT X="Hello"
+PRINT X
