@@ -43,3 +43,17 @@ Feature: Maths
 
       """
     And the stderr should be empty
+
+  Scenario: Two numeric expressions can be subtracted
+    Given a file named "subtraction.c64b" with:
+      """
+      PRINT 1 - 2
+      """
+    When I successfully run `c64basic subtraction.c64b`
+    Then the stdout should contain exactly:
+      """
+      -1
+
+      """
+    And the stderr should be empty
+

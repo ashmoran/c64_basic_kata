@@ -111,6 +111,17 @@ module C64Basic
         end
 
         example do
+          parser.parse("PRINT 5 - 2")
+          expect(expression).to be ==
+            Expressions::PrintCommandExpression.new(
+              Expressions::SubtractionExpression.new(
+                Expressions::IntegerExpression.new(5),
+                Expressions::IntegerExpression.new(2)
+              )
+            )
+        end
+
+        example do
           parser.parse("PRINT 5 + 2 + 1")
           expect(expression).to be ==
             Expressions::PrintCommandExpression.new(
