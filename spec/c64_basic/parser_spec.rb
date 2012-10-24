@@ -98,6 +98,17 @@ module C64Basic
               Expressions::VariableExpression.new("A")
             )
         end
+
+        example do
+          parser.parse("PRINT 5 + 2")
+          expect(expression).to be ==
+            Expressions::PrintCommandExpression.new(
+              Expressions::AdditionExpression.new(
+                Expressions::IntegerExpression.new(5),
+                Expressions::IntegerExpression.new(2)
+              )
+            )
+        end
       end
     end
 

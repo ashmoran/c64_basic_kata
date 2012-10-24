@@ -18,6 +18,8 @@ module C64Basic
         Expressions::PrintCommandExpression.new(parse($1))
       when /([[:alpha:]])=(.*)/
         Expressions::VariableAssignmentExpression.new(parse($1), parse($2))
+      when /([^+]+)\+([^+]+)/
+        Expressions::AdditionExpression.new(parse($1), parse($2))
       when /(-?\d+)/
         Expressions::IntegerExpression.new($1.to_i)
       when /"([^"]*)"/
