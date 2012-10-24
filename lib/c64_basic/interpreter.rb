@@ -6,7 +6,10 @@ module C64Basic
     end
 
     def evaluate(expression)
-      expression.interpret(__io: { output: @output, error: @error })
+      expression.interpret(
+        __io: { output: @output, error: @error },
+        __variables: Hash.new(0)
+      )
     end
   end
 end

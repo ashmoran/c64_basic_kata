@@ -20,6 +20,8 @@ module C64Basic
         Expressions::IntegerExpression.new($1.to_i)
       when /"([^"]*)"/
         Expressions::StringExpression.new($1)
+      when /([[:alpha:]])/
+        Expressions::VariableExpression.new($1)
       end
     end
   end

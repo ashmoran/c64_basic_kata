@@ -15,7 +15,17 @@ module C64Basic
 
     describe "#evaluate" do
       it "evaluates the expression" do
-        expression.should_receive(:interpret).with(__io: { output: output_io, error: error_io })
+        expression.should_receive(:interpret).with(
+          __io: { output: output_io, error: error_io },
+          __variables: { }
+        )
+        interpreter.evaluate(expression)
+      end
+
+      it "defaults variables to 0" do
+        expression.should_receive(:interpret) do |context|
+          expect(context[:__variables]["A"]).to be == 0
+        end
         interpreter.evaluate(expression)
       end
     end

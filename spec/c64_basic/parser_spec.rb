@@ -90,6 +90,14 @@ module C64Basic
               Expressions::StringExpression.new("bobbins")
             )
         end
+
+        example do
+          parser.parse("PRINT A")
+          expect(expression).to be ==
+            Expressions::PrintCommandExpression.new(
+              Expressions::VariableExpression.new("A")
+            )
+        end
       end
     end
   end
