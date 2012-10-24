@@ -17,6 +17,10 @@ module C64Basic
         other.is_a?(VariableExpression) && other.has_name?(@name)
       end
 
+      def to_s
+        @name
+      end
+
       protected
 
       def has_name?(name)

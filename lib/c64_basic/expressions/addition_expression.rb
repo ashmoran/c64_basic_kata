@@ -16,6 +16,10 @@ module C64Basic
           other.has_right_expression?(@right_expression)
       end
 
+      def to_s
+        "(#{@left_expression} + #{@right_expression})"
+      end
+
       protected
 
       def has_left_expression?(left_expression)

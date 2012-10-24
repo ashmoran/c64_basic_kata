@@ -13,6 +13,10 @@ module C64Basic
         other.is_a?(IntegerExpression) && other.has_integer_value?(@value)
       end
 
+      def to_s
+        @value.to_s
+      end
+
       protected
 
       def has_integer_value?(value)

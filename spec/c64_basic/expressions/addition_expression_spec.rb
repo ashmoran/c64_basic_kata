@@ -17,6 +17,8 @@ module C64Basic
         end
       end
 
+      its(:to_s) { should be == "(2 + 5)" }
+
       describe "#==" do
         specify {
           expect(expression).to be ==

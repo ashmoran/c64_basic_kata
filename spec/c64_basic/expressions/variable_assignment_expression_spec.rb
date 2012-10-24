@@ -25,6 +25,8 @@ module C64Basic
         end
       end
 
+      its(:to_s) { should be == "X=(9)" }
+
       describe "#==" do
         specify {
           expect(expression).to be ==

@@ -13,6 +13,10 @@ module C64Basic
         other.is_a?(StringExpression) && other.has_string_value?(@value)
       end
 
+      def to_s
+        @value.inspect
+      end
+
       protected
 
       def has_string_value?(value)

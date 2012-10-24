@@ -13,11 +13,13 @@ module C64Basic
       end
 
       def ==(other)
-        [
-          other.is_a?(VariableAssignmentExpression),
-          other.has_variable_expression?(@variable_expression),
+        other.is_a?(VariableAssignmentExpression) &&
+          other.has_variable_expression?(@variable_expression) &&
           other.has_value_expression?(@value_expression)
-        ].all?
+      end
+
+      def to_s
+        "#{@variable_expression}=(#{@value_expression})"
       end
 
       protected

@@ -12,6 +12,19 @@ Feature: Maths
       """
     And the stderr should be empty
 
+  Scenario: A numeric expression can have more than two terms
+    Given a file named "multiple_addition.c64b" with:
+      """
+      PRINT 4 + 4 + 12
+      """
+    When I successfully run `c64basic multiple_addition.c64b`
+    Then the stdout should contain exactly:
+      """
+      20
+
+      """
+    And the stderr should be empty
+
   Scenario: A numeric expression can be built with variables and/or constants
     Given a file named "addition_with_variables.c64b" with:
       """

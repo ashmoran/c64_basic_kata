@@ -34,6 +34,8 @@ module C64Basic
           end
         end
 
+        its(:to_s) { should be == "PRINT()" }
+
         describe "#==" do
           specify {
             expect(expression).to be == PrintCommandExpression.new
@@ -56,6 +58,8 @@ module C64Basic
             expect(output).to be == "1\n"
           end
         end
+
+        its(:to_s) { should be == "PRINT(1)" }
 
         describe "#==" do
           specify {

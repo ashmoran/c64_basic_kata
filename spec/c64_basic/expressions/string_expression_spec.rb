@@ -13,6 +13,8 @@ module C64Basic
         }
       end
 
+      its(:to_s) { should be == '"foo"' }
+
       describe "#==" do
         specify {
           expect(expression).to be == StringExpression.new("foo")

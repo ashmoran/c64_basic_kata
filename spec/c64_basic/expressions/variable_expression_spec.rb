@@ -17,6 +17,8 @@ module C64Basic
         }
       end
 
+      its(:to_s) { should be == "X" }
+
       describe "#update_context" do
         it "should description" do
           expression.update_context(context, with_value: 2)

@@ -17,6 +17,10 @@ module C64Basic
         other.is_a?(PrintCommandExpression) && other.has_argument?(@argument)
       end
 
+      def to_s
+        "PRINT(#{@argument})"
+      end
+
       protected
 
       def has_argument?(argument)

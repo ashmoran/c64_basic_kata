@@ -13,6 +13,8 @@ module C64Basic
         }
       end
 
+      its(:to_s) { should be == "1" }
+
       describe "#==" do
         specify {
           expect(expression).to be == IntegerExpression.new(1)
