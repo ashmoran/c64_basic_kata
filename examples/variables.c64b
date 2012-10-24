@@ -1,0 +1,8 @@
+N=10
+S="Watch this!"
+M=N
+PRINT "N is"
+PRINT N
+PRINT S
+PRINT "M is"
+PRINT M
