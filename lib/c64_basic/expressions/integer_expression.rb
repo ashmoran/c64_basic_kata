@@ -9,18 +9,12 @@ module C64Basic
         @value
       end
 
-      def ==(other)
-        other.is_a?(IntegerExpression) && other.has_integer_value?(@value)
-      end
-
       def to_s
         @value.to_s
       end
 
-      protected
-
-      def has_integer_value?(value)
-        @value == value
+      def to_ast
+        @value
       end
     end
   end

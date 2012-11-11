@@ -19,28 +19,7 @@ module C64Basic
 
       its(:to_s) { should be == "(2 + 5)" }
 
-      describe "#==" do
-        specify {
-          expect(expression).to be ==
-            AdditionExpression.new(
-              IntegerExpression.new(2), IntegerExpression.new(5)
-            )
-        }
-
-        specify {
-          expect(expression).to_not be ==
-            AdditionExpression.new(
-              IntegerExpression.new(3), IntegerExpression.new(5)
-            )
-        }
-
-        specify {
-          expect(expression).to_not be ==
-            AdditionExpression.new(
-              IntegerExpression.new(2), IntegerExpression.new(6)
-            )
-        }
-      end
+      its(:to_ast) { should be == [ :+, 2, 5 ] }
     end
   end
 end

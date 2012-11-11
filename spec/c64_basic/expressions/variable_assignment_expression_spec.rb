@@ -27,31 +27,7 @@ module C64Basic
 
       its(:to_s) { should be == "X=(9)" }
 
-      describe "#==" do
-        specify {
-          expect(expression).to be ==
-            VariableAssignmentExpression.new(
-              VariableExpression.new("X"),
-              IntegerExpression.new(9)
-            )
-        }
-
-        specify {
-          expect(expression).to_not be ==
-            VariableAssignmentExpression.new(
-              VariableExpression.new("Y"),
-              IntegerExpression.new(9)
-            )
-        }
-
-        specify {
-          expect(expression).to_not be ==
-            VariableAssignmentExpression.new(
-              VariableExpression.new("X"),
-              IntegerExpression.new(10)
-            )
-        }
-      end
+      its(:to_ast) { should be == [ :assign, [ :var, :X ], 9 ] }
     end
   end
 end

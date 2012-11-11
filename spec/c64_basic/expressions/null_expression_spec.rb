@@ -15,16 +15,7 @@ module C64Basic
 
       its(:to_s) { should be == "null" }
 
-      describe "#==" do
-        specify {
-          expect(expression).to be == NullExpression.new
-        }
-
-        specify {
-          # We shouldn't even be able to build this comparison object, really :-)
-          expect(expression).to_not be == IntegerExpression.new(nil)
-        }
-      end
+      its(:to_ast) { should be == nil }
     end
   end
 end

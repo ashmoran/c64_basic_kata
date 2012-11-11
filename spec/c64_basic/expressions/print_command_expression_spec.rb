@@ -36,19 +36,7 @@ module C64Basic
 
         its(:to_s) { should be == "PRINT(null)" }
 
-        describe "#==" do
-          specify {
-            expect(expression).to be == PrintCommandExpression.new
-          }
-
-          specify {
-            expect(expression).to be == PrintCommandExpression.new(NullExpression.new)
-          }
-
-          specify {
-            expect(expression).to_not be == IntegerExpression.new(1)
-          }
-        end
+        its(:to_ast) { should be == [ :print, nil ] }
       end
 
       context "with an argument" do
@@ -65,15 +53,7 @@ module C64Basic
 
         its(:to_s) { should be == "PRINT(1)" }
 
-        describe "#==" do
-          specify {
-            expect(expression).to be == PrintCommandExpression.new(IntegerExpression.new(1))
-          }
-
-          specify {
-            expect(expression).to_not be == PrintCommandExpression.new(IntegerExpression.new(2))
-          }
-        end
+        its(:to_ast) { should be == [ :print, 1 ] }
       end
     end
   end

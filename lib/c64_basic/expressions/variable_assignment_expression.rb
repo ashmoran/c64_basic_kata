@@ -12,24 +12,12 @@ module C64Basic
         )
       end
 
-      def ==(other)
-        other.is_a?(VariableAssignmentExpression) &&
-          other.has_variable_expression?(@variable_expression) &&
-          other.has_value_expression?(@value_expression)
-      end
-
       def to_s
         "#{@variable_expression}=(#{@value_expression})"
       end
 
-      protected
-
-      def has_variable_expression?(variable_expression)
-        @variable_expression == variable_expression
-      end
-
-      def has_value_expression?(value_expression)
-        @value_expression == value_expression
+      def to_ast
+        [ :assign, @variable_expression.to_ast, @value_expression.to_ast ]
       end
     end
   end

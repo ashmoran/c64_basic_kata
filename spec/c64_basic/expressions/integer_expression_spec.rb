@@ -15,19 +15,7 @@ module C64Basic
 
       its(:to_s) { should be == "1" }
 
-      describe "#==" do
-        specify {
-          expect(expression).to be == IntegerExpression.new(1)
-        }
-
-        specify {
-          expect(expression).to_not be == IntegerExpression.new(2)
-        }
-
-        specify {
-          expect(expression).to_not be == StringExpression.new("1")
-        }
-      end
+      its(:to_ast) { should be == 1 }
     end
   end
 end

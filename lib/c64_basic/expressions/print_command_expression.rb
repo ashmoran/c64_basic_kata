@@ -1,26 +1,20 @@
 module C64Basic
   module Expressions
     class PrintCommandExpression
-      def initialize(argument = NullExpression.new)
-        @argument = argument
+      def initialize(argument_expression = NullExpression.new)
+        @argument_expression = argument_expression
       end
 
       def interpret(context)
-        context[:__io][:output].puts(@argument.interpret(context))
-      end
-
-      def ==(other)
-        other.is_a?(PrintCommandExpression) && other.has_argument?(@argument)
+        context[:__io][:output].puts(@argument_expression.interpret(context))
       end
 
       def to_s
-        "PRINT(#{@argument})"
+        "PRINT(#{@argument_expression})"
       end
 
-      protected
-
-      def has_argument?(argument)
-        @argument == argument
+      def to_ast
+        [ :print, @argument_expression.to_ast ]
       end
     end
   end

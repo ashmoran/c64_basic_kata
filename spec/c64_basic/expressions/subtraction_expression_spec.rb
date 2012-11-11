@@ -19,28 +19,7 @@ module C64Basic
 
       its(:to_s) { should be == "(9 - 4)" }
 
-      describe "#==" do
-        specify {
-          expect(expression).to be ==
-            SubtractionExpression.new(
-              IntegerExpression.new(9), IntegerExpression.new(4)
-            )
-        }
-
-        specify {
-          expect(expression).to_not be ==
-            SubtractionExpression.new(
-              IntegerExpression.new(10), IntegerExpression.new(4)
-            )
-        }
-
-        specify {
-          expect(expression).to_not be ==
-            SubtractionExpression.new(
-              IntegerExpression.new(9), IntegerExpression.new(5)
-            )
-        }
-      end
+      its(:to_ast) { should be == [ :-, 9, 4 ] }
     end
   end
 end

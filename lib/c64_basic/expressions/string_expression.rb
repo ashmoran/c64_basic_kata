@@ -9,18 +9,12 @@ module C64Basic
         @value
       end
 
-      def ==(other)
-        other.is_a?(StringExpression) && other.has_string_value?(@value)
-      end
-
       def to_s
         @value.inspect
       end
 
-      protected
-
-      def has_string_value?(value)
-        @value == value
+      def to_ast
+        @value
       end
     end
   end

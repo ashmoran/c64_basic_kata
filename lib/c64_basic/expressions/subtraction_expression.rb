@@ -10,24 +10,12 @@ module C64Basic
         @left_expression.interpret(context) - @right_expression.interpret(context)
       end
 
-      def ==(other)
-        other.is_a?(SubtractionExpression) &&
-          other.has_left_expression?(@left_expression) &&
-          other.has_right_expression?(@right_expression)
-      end
-
       def to_s
         "(#{@left_expression} - #{@right_expression})"
       end
 
-      protected
-
-      def has_left_expression?(left_expression)
-        @left_expression == left_expression
-      end
-
-      def has_right_expression?(right_expression)
-        @right_expression == right_expression
+      def to_ast
+        [ :-, @left_expression.to_ast, @right_expression.to_ast ]
       end
     end
   end

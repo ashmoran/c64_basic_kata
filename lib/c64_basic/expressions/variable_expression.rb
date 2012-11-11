@@ -13,18 +13,12 @@ module C64Basic
         context[:__variables][@name] = options[:with_value]
       end
 
-      def ==(other)
-        other.is_a?(VariableExpression) && other.has_name?(@name)
-      end
-
       def to_s
         @name
       end
 
-      protected
-
-      def has_name?(name)
-        @name == name
+      def to_ast
+        [ :var, @name.to_sym ]
       end
     end
   end

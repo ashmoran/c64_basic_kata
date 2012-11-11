@@ -19,25 +19,13 @@ module C64Basic
 
       its(:to_s) { should be == "X" }
 
+      its(:to_ast) { should be == [ :var, :X ] }
+
       describe "#update_context" do
         it "should description" do
           expression.update_context(context, with_value: 2)
           expect(context[:__variables]["X"]).to be == 2
         end
-      end
-
-      describe "#==" do
-        specify {
-          expect(expression).to be == VariableExpression.new("X")
-        }
-
-        specify {
-          expect(expression).to_not be == VariableExpression.new("Y")
-        }
-
-        specify {
-          expect(expression).to_not be == StringExpression.new("X")
-        }
       end
     end
   end

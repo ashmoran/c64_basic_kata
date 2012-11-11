@@ -12,12 +12,12 @@ module C64Basic
         nil
       end
 
-      def ==(other)
-        other.is_a?(NullExpression)
-      end
-
       def to_s
         "null"
+      end
+
+      def to_ast
+        nil
       end
     end
   end
